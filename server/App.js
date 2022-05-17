@@ -25,9 +25,6 @@ App.use(session({
     resave:true,
     saveUninitialized:true
 	}));
-App.use(Express.json())
-App.use(bodyParser.json());
-App.use(bodyParser.urlencoded({ extended: true }));
 
 /*================*/
 App.get("/",auth,(req,res)=>{
