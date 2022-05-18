@@ -12,6 +12,10 @@ const Reg =new mongoose.Schema({
         type:String,
         required:true
     },
+    productImage:{
+        type:String,
+        required:true
+    },
     tokens:[{
         token:{
           type:String,

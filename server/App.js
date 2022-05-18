@@ -10,6 +10,8 @@ const jwt = require('jsonwebtoken');
 const auth = require("./Middleware/auth");
 const cookieParser = require("cookie-parser")
 const bcrypt = require("bcryptjs")
+const multer = require("multer")
+const upload = multer({dest:"uploads/"})
 /*================*/
 /*Connect DB*/ 
 mongodb();
@@ -75,8 +77,9 @@ App.post("/login",async(req,res)=>{
         res.status(400).json({error:"something not correct"})
     }
 })
-App.post("/product",async(req,res)=>{
+App.post("/product",upload.single('productImage'),async(req,res)=>{
     try{
+        console.log(req.file);
         const {name,category,sub,desc,contract,procedure,delivery,location,origin,price,payterm,buysell} =req.body;
         console.log(name)
         const proData = new productinfo({
